@@ -1,8 +1,33 @@
 import { Outlet } from "react-router-dom";
-
+import {
+  NavigationContainer,
+  LinksWrapper,
+  LinkList,
+  CartIconContainer,
+  LogoWrapper,
+} from "./Navigation.styles";
+import { ReactComponent as Logo } from "../../assets/crown.svg";
+import { ReactComponent as CartIcon } from "../../assets/shopping-bag.svg";
+import { Link } from "react-router-dom";
 const Navigation = () => (
   <>
-    <h1>Navigation</h1>
+    <NavigationContainer>
+      <LogoWrapper to="/">
+        <Logo />
+      </LogoWrapper>
+      <LinksWrapper>
+        <LinkList>
+          <Link to="/shop">SHOP</Link>
+        </LinkList>
+        <LinkList>
+          <Link to="/auth">SIGN IN</Link>
+        </LinkList>
+        <CartIconContainer>
+          <CartIcon />
+        </CartIconContainer>
+      </LinksWrapper>
+    </NavigationContainer>
+
     <Outlet />
   </>
 );

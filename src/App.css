@@ -1,0 +1,11 @@
+.App {
+  box-sizing: border-box;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

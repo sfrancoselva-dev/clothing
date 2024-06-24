@@ -5,6 +5,8 @@ import Shop from "./pages/Shop/Shop.component";
 import Checkout from "./pages/Checkout/Checkout.component";
 import Auth from "./pages/Auth/Auth.component";
 
+import "./App.css";
+
 function App() {
   return (
     <div className="App">
