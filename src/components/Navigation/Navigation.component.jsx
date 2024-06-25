@@ -5,6 +5,7 @@ import {
   LinkList,
   CartIconContainer,
   LogoWrapper,
+  ContentWrapper,
 } from "./Navigation.styles";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import { ReactComponent as CartIcon } from "../../assets/shopping-bag.svg";
@@ -27,8 +28,9 @@ const Navigation = () => (
         </CartIconContainer>
       </LinksWrapper>
     </NavigationContainer>
-
-    <Outlet />
+    <ContentWrapper>
+      <Outlet />
+    </ContentWrapper>
   </>
 );
 

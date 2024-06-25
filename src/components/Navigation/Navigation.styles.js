@@ -26,3 +26,9 @@ export const CartIconContainer = styled.div`
   width: 24px;
   cursor: pointer;
 `;
+
+export const ContentWrapper = styled.div`
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 25px 0;
+`;
