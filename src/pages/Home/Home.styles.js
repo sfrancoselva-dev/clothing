@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import styled from "styled-components";
 
 export const Collections = styled.div`
@@ -5,7 +7,7 @@ export const Collections = styled.div`
   flex-wrap: wrap;
 `;
 
-export const Collection = styled.div`
+export const Collection = styled(Link)`
   height: 250px;
   border: 1px solid #000;
   position: relative;
