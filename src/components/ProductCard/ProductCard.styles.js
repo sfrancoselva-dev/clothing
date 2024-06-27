@@ -5,6 +5,18 @@ export const ProductCardWrapper = styled.div`
   height: 350px;
   position: relative;
 
+  @media (max-width: 500px) {
+    width: 100%;
+  }
+
+  @media ((min-width: 501px) and (max-width: 920px)) {
+    width: 47%;
+  }
+
+  @media ((min-width: 921px) and (max-width: 1050px)) {
+    width: 30%;
+  }
+
   & Button {
     position: absolute;
     bottom: 60px;
@@ -14,6 +26,7 @@ export const ProductCardWrapper = styled.div`
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease-out;
+    width: 80%;
   }
 
   &:hover {
