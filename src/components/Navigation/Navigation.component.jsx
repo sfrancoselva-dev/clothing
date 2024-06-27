@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import CartDropdown from "../CartDropdown/CartDropdown.component";
 import {
   NavigationContainer,
   LinksWrapper,
@@ -25,6 +26,7 @@ const Navigation = () => (
         </LinkList>
         <CartIconContainer>
           <CartIcon />
+          <CartDropdown />
         </CartIconContainer>
       </LinksWrapper>
     </NavigationContainer>

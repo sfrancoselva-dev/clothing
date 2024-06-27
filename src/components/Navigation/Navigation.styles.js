@@ -25,6 +25,7 @@ export const LinkList = styled.li`
 export const CartIconContainer = styled.div`
   width: 24px;
   cursor: pointer;
+  position: relative;
 `;
 
 export const ContentWrapper = styled.div`
