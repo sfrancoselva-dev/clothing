@@ -33,3 +33,12 @@ export const ContentWrapper = styled.div`
   margin: 0 auto;
   padding: 25px 0;
 `;
+
+export const CartItemCount = styled.div`
+  font-size: 11px;
+  text-align: center;
+  position: absolute;
+  top: 8px;
+  width: 24px;
+  font-weight: 700;
+`;
