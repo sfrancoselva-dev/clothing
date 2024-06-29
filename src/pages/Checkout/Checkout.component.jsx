@@ -1,65 +1,73 @@
-import "./Checkout.styles.css";
+import {
+  Table,
+  TableRow,
+  TableHeading,
+  TableData,
+  ProductImage,
+  Total,
+  Arrow,
+  Quantity,
+  RemoveIcon,
+} from "./Checkout.styles";
 
 const Checkout = () => {
   return (
     <div>
-      <table>
-        <tr>
-          <th>Product</th>
-          <th>Description</th>
-          <th>Quantity</th>
-          <th>Price</th>
-          <th>Remove</th>
-        </tr>
+      <Table>
+        <TableRow>
+          <TableHeading>Product</TableHeading>
+          <TableHeading>Description</TableHeading>
+          <TableHeading>Quantity</TableHeading>
+          <TableHeading>Price</TableHeading>
+          <TableHeading>Remove</TableHeading>
+        </TableRow>
 
-        <tr>
-          <td>
-            <div className="productImage"></div>
-          </td>
-          <td>Brown Cowboy</td>
-          <td>
-            <span className="arrow">❰</span>
-            <span className="quantity">2</span>
-            <span className="arrow">❱</span>
-          </td>
-          <td>70</td>
-          <td className="remove-icon">✕</td>
-        </tr>
+        <TableRow>
+          <TableData>
+            <ProductImage></ProductImage>
+          </TableData>
+          <TableData>Brown Cowboy</TableData>
+          <TableData>
+            <Arrow>❰</Arrow>
+            <Quantity>2</Quantity>
+            <Arrow>❱</Arrow>
+          </TableData>
+          <TableData>70</TableData>
+          <RemoveIcon>✕</RemoveIcon>
+        </TableRow>
 
-        <tr>
-          <td>
-            <div className="productImage"></div>
-          </td>
-          <td>Brown Cowboy</td>
-          <td>
-            <span className="arrow">❰</span>
-            <span className="quantity">2</span>
-            <span className="arrow">❱</span>
-          </td>
-          <td>70</td>
-          <td className="remove-icon">✕</td>
-        </tr>
+        <TableRow>
+          <TableData>
+            <ProductImage></ProductImage>
+          </TableData>
+          <TableData>Brown Cowboy</TableData>
+          <TableData>
+            <Arrow>❰</Arrow>
+            <Quantity>2</Quantity>
+            <Arrow>❱</Arrow>
+          </TableData>
+          <TableData>70</TableData>
+          <RemoveIcon>✕</RemoveIcon>
+        </TableRow>
 
-        <tr>
-          <td>
-            <div className="productImage"></div>
-          </td>
-          <td>Grey Brim</td>
-          <td>
-            <span className="arrow">❰</span>
-            <span className="quantity">2</span>
-            <span className="arrow">❱</span>
-          </td>
-          <td>25</td>
-          <td className="remove-icon">✕</td>
-        </tr>
+        <TableRow>
+          <TableData>
+            <ProductImage></ProductImage>
+          </TableData>
+          <TableData>Grey Brim</TableData>
+          <TableData>
+            <Arrow>❰</Arrow>
+            <Quantity>2</Quantity>
+            <Arrow>❱</Arrow>
+          </TableData>
+          <TableData>25</TableData>
+          <RemoveIcon>✕</RemoveIcon>
+        </TableRow>
 
-        <tr>
-          <td colSpan={5} className="total">
-            TOTAL: $95
-          </td>
-        </tr>
-      </table>
+        <TableRow>
+          <Total colSpan={5}>TOTAL: $95</Total>
+        </TableRow>
+      </Table>
     </div>
   );
 };
