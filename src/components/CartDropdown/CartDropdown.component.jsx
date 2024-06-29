@@ -8,7 +8,14 @@ import {
   CheckoutButton,
 } from "./CartDropdown.styles";
 
+import { useNavigate } from "react-router-dom";
+
 const CartDropdown = () => {
+  const navigate = useNavigate();
+
+  const navigateToCheckout = () => {
+    navigate("/checkout");
+  };
   return (
     <CartDropdownWrapper>
       <CartItemsWrapper>
@@ -39,7 +46,9 @@ const CartDropdown = () => {
           </CartItemDetails>
         </CartItem>
       </CartItemsWrapper>
-      <CheckoutButton>GO TO CHECKOUT</CheckoutButton>
+      <CheckoutButton onClick={navigateToCheckout}>
+        GO TO CHECKOUT
+      </CheckoutButton>
     </CartDropdownWrapper>
   );
 };
