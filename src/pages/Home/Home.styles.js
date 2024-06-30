@@ -20,7 +20,7 @@ export const Collection = styled(Link)`
   &:nth-child(5) {
     height: 400px;
 
-    @media (max-width: 720px) {
+    @media (max-width: 992px) {
       height: 250px;
     }
   }
