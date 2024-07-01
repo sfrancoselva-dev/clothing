@@ -36,7 +36,7 @@ export const CollectionImg = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  transition: transform 0.8s ease-in-out;
+  transition: transform 1s ease-in-out;
 `;
 
 export const CollectionDetail = styled.div`
@@ -47,7 +47,7 @@ export const CollectionDetail = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.9);
 
   p {
     font-size: 14px;

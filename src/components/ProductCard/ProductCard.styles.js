@@ -27,10 +27,8 @@ export const ProductCardWrapper = styled.div`
     visibility: hidden;
     transition: all 0.3s ease-out;
     width: 80%;
-  }
 
-  &:hover {
-    & Button {
+    &.show {
       opacity: 1;
       visibility: visible;
     }
@@ -42,6 +40,25 @@ export const ProductImage = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: visible;
+    transition: all 0.3s ease-out;
+  }
+
+  &.activate {
+    &:before {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
 `;
 
 export const ProductDetailFooter = styled.div`

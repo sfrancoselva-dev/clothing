@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import {
   CategoryItemsWrapper,
   CategoryLinkTitle,
+  CategoryPreviewWrapper,
 } from "./CategoryPreview.styles";
 import ProductCard from "../ProductCard/ProductCard.component";
 
@@ -16,7 +17,7 @@ const CategoryPreview = ({
   };
 
   return (
-    <div className="category-wrapper" key={title}>
+    <CategoryPreviewWrapper key={title}>
       <CategoryLinkTitle onClick={navigateToCategory}>
         {title.toUpperCase()}
       </CategoryLinkTitle>
@@ -27,7 +28,7 @@ const CategoryPreview = ({
           );
         })}
       </CategoryItemsWrapper>
-    </div>
+    </CategoryPreviewWrapper>
   );
 };
 

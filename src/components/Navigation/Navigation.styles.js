@@ -4,6 +4,12 @@ import { Link } from "react-router-dom";
 export const NavigationContainer = styled.div`
   display: flex;
   justify-content: space-between;
+
+  @media screen and (max-width: 480px) {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
 `;
 
 export const LogoWrapper = styled(Link)`
@@ -14,8 +20,13 @@ export const LogoWrapper = styled(Link)`
 export const LinksWrapper = styled.ul`
   display: flex;
   list-style: none;
-  width: 210px;
   justify-content: space-between;
+  padding: 0;
+  gap: 1.5rem;
+
+  @media screen and (max-width: 480px) {
+    justify-content: space-around;
+  }
 `;
 
 export const LinkList = styled.li`
