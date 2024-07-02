@@ -1,15 +1,16 @@
 import { Routes, Route } from "react-router-dom";
 import CategoriesPreview from "../../components/CategoriesPreview/CategoriesPreview.component";
 import CategoryList from "../../components/CategoryList/CategoryList.component";
-import { useContext, useEffect } from "react";
-import { CategoriesContext } from "../../context/categories/categories.context";
+import { useEffect } from "react";
 import { SHOP_DATA } from "../../shop-data";
 
-const Shop = () => {
-  const { setCategories } = useContext(CategoriesContext);
+import { useDispatch } from "react-redux";
+import { actionFetchCategories } from "../../store/categories/categories.action";
 
+const Shop = () => {
+  const dispatch = useDispatch();
   useEffect(() => {
-    setCategories(SHOP_DATA);
+    dispatch(actionFetchCategories(SHOP_DATA));
   }, []);
 
   return (
