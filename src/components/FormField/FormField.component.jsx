@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FormGroup, FormInput, FormLabel } from "./FormField.styles";
 
 const FormField = ({
-  formFieldProps: { type, name, id, required, labelText },
+  formFieldProps: { type, name, id, required, labelText, value, setValue },
   className,
 }) => {
   const [fieldFocused, setFieldFocused] = useState(false);
@@ -15,6 +15,11 @@ const FormField = ({
     if (formInputvalue !== "") return;
     setFieldFocused(false);
   };
+
+  const handleValueChange = (e) => {
+    const value = e.target.value;
+    setValue(value);
+  };
   return (
     <FormGroup>
       <FormInput
@@ -25,8 +30,13 @@ const FormField = ({
         onFocus={onFocusHandler}
         onBlur={onBlurHandler}
         className={className}
+        value={value}
+        onChange={handleValueChange}
       />
-      <FormLabel for={id} className={`${fieldFocused ? "shrink-label" : ""}`}>
+      <FormLabel
+        htmlFor={id}
+        className={`${fieldFocused ? "shrink-label" : ""}`}
+      >
         {labelText}
       </FormLabel>
     </FormGroup>
