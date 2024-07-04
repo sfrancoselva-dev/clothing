@@ -8,9 +8,7 @@ import FormField from "../FormField/FormField.component";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { actionSigningUp } from "../../store/user/user.action";
-import { selectError, selectUser } from "../../store/user/user.selector";
-
-import { useNavigate } from "react-router-dom";
+import { selectError } from "../../store/user/user.selector";
 
 const SignUp = () => {
   const [displayName, setDisplayName] = useState("");
@@ -18,9 +16,8 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [confirmedPassword, setConfirmedPassword] = useState("");
   const error = useSelector(selectError);
-  const user = useSelector(selectUser);
+
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const checkPasswordMatch = (pwd, confirmedPwd) => {
     return pwd === confirmedPwd;
@@ -51,11 +48,6 @@ const SignUp = () => {
       }
     }
   }, [error]);
-
-  useEffect(() => {
-    user && navigate("/");
-  }, [user]);
-
   return (
     <SignUpWrapper>
       <FormHeader>

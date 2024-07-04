@@ -23,8 +23,6 @@ const Navigation = () => {
   const handleAuthClick = () => {
     if (!user) navigate("/auth");
     else dispatch(actionSigningOut());
-
-    console.log(user);
   };
 
   return (

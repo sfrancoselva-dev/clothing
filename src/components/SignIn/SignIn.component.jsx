@@ -6,11 +6,34 @@ import FormFooter from "../FormFooter/FormFooter.component";
 
 import { SignInWrapper } from "./SignIn.styles";
 import FormField from "../FormField/FormField.component";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { actionSigningIn } from "../../store/user/user.action";
+import { selectError } from "../../store/user/user.selector";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const error = useSelector(selectError);
+
+  const signInHandler = (e) => {
+    e.preventDefault();
+    dispatch(actionSigningIn(email, password));
+  };
+
+  useEffect(() => {
+    if (error) {
+      switch (error.code) {
+        case "auth/invalid-credential":
+          alert("Invalid credentials");
+          break;
+
+        default:
+          return;
+      }
+    }
+  }, [error]);
 
   return (
     <SignInWrapper>
@@ -19,7 +42,7 @@ const SignIn = () => {
         <p>Sign in with your email and password</p>
       </FormHeader>
       <FormContent>
-        <form>
+        <form onSubmit={signInHandler}>
           <FormField
             formFieldProps={{
               id: "email",
@@ -43,12 +66,12 @@ const SignIn = () => {
               setValue: setPassword,
             }}
           />
+          <FormFooter>
+            <Button>SIGN IN</Button>
+            <Button type={BTN_TYPES.googleSignIn}>SIGN IN WITH GOOGLE</Button>
+          </FormFooter>
         </form>
       </FormContent>
-      <FormFooter>
-        <Button>SIGN IN</Button>
-        <Button type={BTN_TYPES.googleSignIn}>SIGN IN WITH GOOGLE</Button>
-      </FormFooter>
     </SignInWrapper>
   );
 };

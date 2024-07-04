@@ -16,6 +16,7 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         user: payload,
+        error: null,
         loading: false,
       };
     case USER_TYPES.signUpFailed:
@@ -39,6 +40,27 @@ const userReducer = (state = initialState, action) => {
       };
 
     case USER_TYPES.signOutFailed:
+      return {
+        ...state,
+        loading: false,
+        error: payload,
+      };
+
+    case USER_TYPES.signingIn:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case USER_TYPES.signInSuccess:
+      return {
+        ...state,
+        user: payload,
+        error: null,
+        loading: false,
+      };
+
+    case USER_TYPES.signInFailed:
       return {
         ...state,
         loading: false,

@@ -5,4 +5,7 @@ export const USER_TYPES = {
   signingOut: "user/signingOut",
   signOutSuccess: "user/signOutSuccess",
   signOutFailed: "user/signOutFailed",
+  signingIn: "user/signingIn",
+  signInSuccess: "user/signInSuccess",
+  signInFailed: "user/signInFailed",
 };

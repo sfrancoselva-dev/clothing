@@ -19,3 +19,12 @@ export const actionSignOutSuccess = () =>
 
 export const actionSignOutFailed = (err) =>
   createAction(USER_TYPES.signOutFailed, err);
+
+export const actionSigningIn = (email, password) =>
+  createAction(USER_TYPES.signingIn, { email, password });
+
+export const actionSignInSuccess = (user) =>
+  createAction(USER_TYPES.signInSuccess, user);
+
+export const actionSignInFailed = (err) =>
+  createAction(USER_TYPES.signInFailed, err);
