@@ -11,11 +11,22 @@ import {
 } from "./Navigation.styles";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import { ReactComponent as CartIcon } from "../../assets/shopping-bag.svg";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import { selectUser } from "../../store/user/user.selector";
+import { actionSigningOut } from "../../store/user/user.action";
 const Navigation = () => {
   const user = useSelector(selectUser);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleAuthClick = () => {
+    if (!user) navigate("/auth");
+    else dispatch(actionSigningOut());
+
+    console.log(user);
+  };
+
   return (
     <>
       <NavigationContainer>
@@ -26,8 +37,8 @@ const Navigation = () => {
           <LinkList>
             <Link to="/shop">SHOP</Link>
           </LinkList>
-          <LinkList>
-            <Link to="/auth">{user ? `SIGN OUT` : `SIGN IN`}</Link>
+          <LinkList onClick={handleAuthClick}>
+            <Link>{user ? `SIGN OUT` : `SIGN IN`}</Link>
           </LinkList>
           <CartIconContainer>
             <CartIcon />

@@ -24,6 +24,26 @@ const userReducer = (state = initialState, action) => {
         error: payload,
         loading: false,
       };
+
+    case USER_TYPES.signingOut:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case USER_TYPES.signOutSuccess:
+      return {
+        ...state,
+        loading: false,
+        user: null,
+      };
+
+    case USER_TYPES.signOutFailed:
+      return {
+        ...state,
+        loading: false,
+        error: payload,
+      };
     default:
       return state;
   }

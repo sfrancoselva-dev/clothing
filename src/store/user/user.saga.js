@@ -2,9 +2,14 @@ import { USER_TYPES } from "./user.types";
 
 import { takeLatest, call, put } from "redux-saga/effects";
 
-import { signUpFB } from "../../utils/firebase.utils";
+import { signUpFB, signOutFB } from "../../utils/firebase.utils";
 
-import { actionSignUpSuccess, actionSignUpFailed } from "./user.action";
+import {
+  actionSignUpSuccess,
+  actionSignUpFailed,
+  actionSignOutSuccess,
+  actionSignOutFailed,
+} from "./user.action";
 
 function* signUpSaga({ payload }) {
   const { displayName, email, password } = payload;
@@ -16,6 +21,16 @@ function* signUpSaga({ payload }) {
   }
 }
 
+function* signOutSaga() {
+  try {
+    yield call(signOutFB);
+    yield put(actionSignOutSuccess());
+  } catch (err) {
+    yield put(actionSignOutFailed(err));
+  }
+}
+
 export function* userSaga() {
   yield takeLatest(USER_TYPES.signingUp, signUpSaga);
+  yield takeLatest(USER_TYPES.signingOut, signOutSaga);
 }
