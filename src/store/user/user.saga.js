@@ -32,7 +32,6 @@ function* signUpSaga({ payload }) {
 
 function* signInSaga({ payload }) {
   const { email, password } = payload;
-
   try {
     const user = yield call(signInFB, email, password);
     yield put(actionSignInSuccess(user));
