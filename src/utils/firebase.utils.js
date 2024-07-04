@@ -4,22 +4,37 @@ import {
   createUserWithEmailAndPassword,
   signOut,
   signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
+
+const storeUserToFireStore = async (uid, displayName, email) => {
+  await setDoc(doc(db, "users", uid), {
+    displayName,
+    email,
+  });
+};
 
 export const signUpFB = async (displayName, email, password) => {
   const { user } = await createUserWithEmailAndPassword(auth, email, password);
   if (user.uid) {
-    await setDoc(doc(db, "users", user.uid), {
-      displayName,
-      email,
-    });
-
-    return user;
+    await storeUserToFireStore(user.uid, displayName, email);
   }
+  return user;
 };
 
 export const signInFB = async (email, password) => {
   const { user } = await signInWithEmailAndPassword(auth, email, password);
+  return user;
+};
+
+export const signInWithGoogleFB = async () => {
+  const provider = new GoogleAuthProvider();
+  const { user } = await signInWithPopup(auth, provider);
+  if (user.uid) {
+    await storeUserToFireStore(user.uid, user.displayName, user.email);
+  }
+
   return user;
 };
 

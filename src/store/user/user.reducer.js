@@ -66,6 +66,19 @@ const userReducer = (state = initialState, action) => {
         loading: false,
         error: payload,
       };
+
+    case USER_TYPES.googleSignInSuccess:
+      return {
+        ...state,
+        user: payload,
+        error: null,
+      };
+
+    case USER_TYPES.googleSignInFailed:
+      return {
+        ...state,
+        error: payload,
+      };
     default:
       return state;
   }

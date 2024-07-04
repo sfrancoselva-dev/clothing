@@ -8,7 +8,10 @@ import { SignInWrapper } from "./SignIn.styles";
 import FormField from "../FormField/FormField.component";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { actionSigningIn } from "../../store/user/user.action";
+import {
+  actionSigningIn,
+  actionGoogleSigningIn,
+} from "../../store/user/user.action";
 import { selectError } from "../../store/user/user.selector";
 
 const SignIn = () => {
@@ -20,6 +23,11 @@ const SignIn = () => {
   const signInHandler = (e) => {
     e.preventDefault();
     dispatch(actionSigningIn(email, password));
+  };
+
+  const googleSigninHandler = (e) => {
+    e.preventDefault();
+    dispatch(actionGoogleSigningIn());
   };
 
   useEffect(() => {
@@ -68,7 +76,9 @@ const SignIn = () => {
           />
           <FormFooter>
             <Button>SIGN IN</Button>
-            <Button type={BTN_TYPES.googleSignIn}>SIGN IN WITH GOOGLE</Button>
+            <Button type={BTN_TYPES.googleSignIn} onClick={googleSigninHandler}>
+              SIGN IN WITH GOOGLE
+            </Button>
           </FormFooter>
         </form>
       </FormContent>

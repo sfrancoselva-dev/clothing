@@ -28,3 +28,12 @@ export const actionSignInSuccess = (user) =>
 
 export const actionSignInFailed = (err) =>
   createAction(USER_TYPES.signInFailed, err);
+
+export const actionGoogleSigningIn = () =>
+  createAction(USER_TYPES.siginingInWithGoogle);
+
+export const actionGoogleSignInSuccess = (user) =>
+  createAction(USER_TYPES.googleSignInSuccess, user);
+
+export const actionGoogleSignInFailed = (err) =>
+  createAction(USER_TYPES.googleSignInFailed, err);

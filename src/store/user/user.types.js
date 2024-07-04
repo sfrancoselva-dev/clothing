@@ -8,4 +8,7 @@ export const USER_TYPES = {
   signingIn: "user/signingIn",
   signInSuccess: "user/signInSuccess",
   signInFailed: "user/signInFailed",
+  siginingInWithGoogle: "user/siginingInWithGoogle",
+  googleSignInSuccess: "user/googleSignInSuccess",
+  googleSignInFailed: "user/googleSignInFailed",
 };
