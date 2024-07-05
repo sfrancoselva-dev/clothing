@@ -1,3 +1,5 @@
 export const Categories_Types = {
-  fetchCategories: "categories/fetchCategories",
+  fetchingCategories: "categories/fetchingCategories",
+  fetchCategoriesSuccess: "categories/fetchCategoriesSuccess",
+  fetchCategoriesFailed: "categories/fetchCategoriesFailed",
 };
