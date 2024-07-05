@@ -8,14 +8,18 @@ import {
 
 import { useDispatch, useSelector } from "react-redux";
 import { actionFetchingCollection } from "../../store/collections/collection.action";
-import { selectCollection } from "../../store/collections/collection.selector";
+import {
+  selectCollection,
+  selectFetchedStatus,
+} from "../../store/collections/collection.selector";
 
 const Home = () => {
   const dispatch = useDispatch();
   const collection = useSelector(selectCollection);
+  const isCollectionFetched = useSelector(selectFetchedStatus);
 
   useEffect(() => {
-    dispatch(actionFetchingCollection());
+    !isCollectionFetched && dispatch(actionFetchingCollection());
   }, []);
 
   return (

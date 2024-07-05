@@ -12,6 +12,7 @@ const categoriesReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+        isFetched: false,
       };
 
     case Categories_Types.fetchCategoriesSuccess:
@@ -20,6 +21,7 @@ const categoriesReducer = (state = initialState, action) => {
         loading: false,
         categories: payload,
         error: null,
+        isFetched: true,
       };
 
     case Categories_Types.fetchCategoriesFailed:
@@ -27,6 +29,7 @@ const categoriesReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         error: payload,
+        isFetched: false,
       };
 
     default:

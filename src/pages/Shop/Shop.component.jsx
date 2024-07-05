@@ -3,13 +3,16 @@ import CategoriesPreview from "../../components/CategoriesPreview/CategoriesPrev
 import CategoryList from "../../components/CategoryList/CategoryList.component";
 import { useEffect } from "react";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { actionFetchingCategories } from "../../store/categories/categories.action";
+import { selectFetchedStatus } from "../../store/categories/categories.selector";
 
 const Shop = () => {
   const dispatch = useDispatch();
+  const isCategoriesFetched = useSelector(selectFetchedStatus);
+
   useEffect(() => {
-    dispatch(actionFetchingCategories());
+    !isCategoriesFetched && dispatch(actionFetchingCategories());
   }, []);
 
   return (

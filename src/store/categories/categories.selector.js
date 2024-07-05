@@ -11,3 +11,8 @@ export const selectCategoriesLoading = createSelector(
   [categoriesReducer],
   (categories) => categories.loading
 );
+
+export const selectFetchedStatus = createSelector(
+  [categoriesReducer],
+  (categories) => categories.isFetched
+);

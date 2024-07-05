@@ -12,6 +12,7 @@ export const collectionReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+        isFetched: false,
       };
 
     case COLLECTION_TYPES.fetchCollectionSuccess:
@@ -20,6 +21,7 @@ export const collectionReducer = (state = initialState, action) => {
         collection: payload,
         loading: false,
         error: null,
+        isFetched: true,
       };
 
     case COLLECTION_TYPES.fetchCollectionFailed:
@@ -27,6 +29,7 @@ export const collectionReducer = (state = initialState, action) => {
         ...state,
         error: payload,
         loading: false,
+        isFetched: false,
       };
 
     default:

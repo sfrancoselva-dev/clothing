@@ -11,3 +11,8 @@ export const selectCollectionLoading = createSelector(
   [collectionReducer],
   (collection) => collection.loading
 );
+
+export const selectFetchedStatus = createSelector(
+  [collectionReducer],
+  (collection) => collection.isFetched
+);
