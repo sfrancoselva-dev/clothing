@@ -1,5 +1,5 @@
 import { db, auth } from "../firebase";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, collection, getDocs } from "firebase/firestore";
 import {
   createUserWithEmailAndPassword,
   signOut,
@@ -40,4 +40,20 @@ export const signInWithGoogleFB = async () => {
 
 export const signOutFB = async () => {
   await signOut(auth);
+};
+
+export const getCollectionFB = async (collectionName) => {
+  if (collectionName !== "") {
+    const collectionRef = collection(db, collectionName);
+    const querySnapshot = await getDocs(collectionRef);
+
+    const docs = querySnapshot.docs;
+
+    const data = docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
+    return data;
+  }
 };

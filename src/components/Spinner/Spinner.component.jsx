@@ -3,12 +3,16 @@ import { useContext, useEffect } from "react";
 import { SpinnerContext } from "../../context/spinner/spinner.context";
 
 import { useSelector } from "react-redux";
-import { selectLoading } from "../../store/user/user.selector";
+import { selectUserLoading } from "../../store/user/user.selector";
+import { selectCollectionLoading } from "../../store/collections/collection.selector";
 
 const Spinner = () => {
   const { spinner, setSpinner } = useContext(SpinnerContext);
 
-  const loading = useSelector(selectLoading);
+  const userLoading = useSelector(selectUserLoading);
+  const collectionLoading = useSelector(selectCollectionLoading);
+
+  const loading = userLoading || collectionLoading;
 
   useEffect(() => {
     setSpinner(loading);
