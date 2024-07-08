@@ -10,9 +10,35 @@ import {
   RemoveIcon,
 } from "./Checkout.styles";
 
+import { useSelector, useDispatch } from "react-redux";
+import {
+  selectCartItems,
+  selectTotalPrice,
+} from "../../store/cart/cart.selector";
+
+import {
+  actionUpdateQty,
+  actionDeleteFromCart,
+} from "../../store/cart/cart.action";
+
 const Checkout = () => {
+  const cartItems = useSelector(selectCartItems);
+  const totalPrice = useSelector(selectTotalPrice);
+
+  const dispatch = useDispatch();
+
+  const updateQty = (e) => {
+    const { id, flag } = e.target.dataset;
+    dispatch(actionUpdateQty(id, flag));
+  };
+
+  const deleteCartItem = (e) => {
+    const { id } = e.target.dataset;
+    dispatch(actionDeleteFromCart(id));
+  };
+
   return (
-    <div>
+    <>
       <Table>
         <TableRow>
           <TableHeading>Product</TableHeading>
@@ -21,54 +47,37 @@ const Checkout = () => {
           <TableHeading>Price</TableHeading>
           <TableHeading>Remove</TableHeading>
         </TableRow>
+        {cartItems.map((cartItem) => {
+          return (
+            <TableRow>
+              <TableData>
+                <ProductImage
+                  style={{ backgroundImage: `url(${cartItem.imageUrl})` }}
+                ></ProductImage>
+              </TableData>
+              <TableData>{cartItem.name}</TableData>
+              <TableData>
+                <Arrow onClick={updateQty} data-id={cartItem.id} data-flag="-">
+                  ❰
+                </Arrow>
+                <Quantity>{cartItem.quantity}</Quantity>
+                <Arrow onClick={updateQty} data-id={cartItem.id} data-flag="+">
+                  ❱
+                </Arrow>
+              </TableData>
+              <TableData>{cartItem.price}</TableData>
+              <RemoveIcon data-id={cartItem.id} onClick={deleteCartItem}>
+                ✕
+              </RemoveIcon>
+            </TableRow>
+          );
+        })}
 
         <TableRow>
-          <TableData>
-            <ProductImage></ProductImage>
-          </TableData>
-          <TableData>Brown Cowboy</TableData>
-          <TableData>
-            <Arrow>❰</Arrow>
-            <Quantity>2</Quantity>
-            <Arrow>❱</Arrow>
-          </TableData>
-          <TableData>70</TableData>
-          <RemoveIcon>✕</RemoveIcon>
-        </TableRow>
-
-        <TableRow>
-          <TableData>
-            <ProductImage></ProductImage>
-          </TableData>
-          <TableData>Brown Cowboy</TableData>
-          <TableData>
-            <Arrow>❰</Arrow>
-            <Quantity>2</Quantity>
-            <Arrow>❱</Arrow>
-          </TableData>
-          <TableData>70</TableData>
-          <RemoveIcon>✕</RemoveIcon>
-        </TableRow>
-
-        <TableRow>
-          <TableData>
-            <ProductImage></ProductImage>
-          </TableData>
-          <TableData>Grey Brim</TableData>
-          <TableData>
-            <Arrow>❰</Arrow>
-            <Quantity>2</Quantity>
-            <Arrow>❱</Arrow>
-          </TableData>
-          <TableData>25</TableData>
-          <RemoveIcon>✕</RemoveIcon>
-        </TableRow>
-
-        <TableRow>
-          <Total colSpan={5}>TOTAL: $95</Total>
+          <Total colSpan={5}>TOTAL: ${totalPrice}</Total>
         </TableRow>
       </Table>
-    </div>
+    </>
   );
 };
 

@@ -29,7 +29,6 @@ export const TableData = styled.td`
 `;
 
 export const ProductImage = styled.div`
-  background: url("https://i.ibb.co/QdJwgmp/brown-cowboy.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;

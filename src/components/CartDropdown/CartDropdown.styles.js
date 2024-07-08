@@ -13,7 +13,6 @@ export const CartDropdownWrapper = styled.div`
   padding: 20px 10px;
   background: #fff;
   z-index: 9999;
-  display: none;
 
   @media (max-width: 400px) {
     width: 280px;

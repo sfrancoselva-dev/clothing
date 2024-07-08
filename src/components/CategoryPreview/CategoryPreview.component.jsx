@@ -24,7 +24,9 @@ const CategoryPreview = ({
       <CategoryItemsWrapper>
         {items.map((item, index) => {
           return (
-            index < itemsToShow && <ProductCard item={item} key={item.id} />
+            index < itemsToShow && (
+              <ProductCard item={item} key={item.id} belongsTo={title} />
+            )
           );
         })}
       </CategoryItemsWrapper>

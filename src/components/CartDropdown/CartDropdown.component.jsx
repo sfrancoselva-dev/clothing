@@ -8,10 +8,14 @@ import {
   CheckoutButton,
 } from "./CartDropdown.styles";
 
+import { useSelector } from "react-redux";
+import { selectCartItems } from "../../store/cart/cart.selector";
+
 import { useNavigate } from "react-router-dom";
 
 const CartDropdown = () => {
   const navigate = useNavigate();
+  const cartItems = useSelector(selectCartItems);
 
   const navigateToCheckout = () => {
     navigate("/checkout");
@@ -19,32 +23,19 @@ const CartDropdown = () => {
   return (
     <CartDropdownWrapper>
       <CartItemsWrapper>
-        <CartItem>
-          <CartProductImg src="https://i.ibb.co/ZYW3VTp/brown-brim.png" />
-          <CartItemDetails>
-            <div className="product-name">Product 1</div>
-            <span className="quantity">1</span> <span>&times;</span>
-            <ProductPrice>$30</ProductPrice>
-          </CartItemDetails>
-        </CartItem>
-
-        <CartItem>
-          <CartProductImg src="https://i.ibb.co/ZYW3VTp/brown-brim.png" />
-          <CartItemDetails>
-            <div className="product-name">Product 2</div>
-            <span className="quantity">1</span> <span>&times;</span>
-            <ProductPrice>$30</ProductPrice>
-          </CartItemDetails>
-        </CartItem>
-
-        <CartItem>
-          <CartProductImg src="https://i.ibb.co/ZYW3VTp/brown-brim.png" />
-          <CartItemDetails>
-            <div className="product-name">Product 2</div>
-            <span className="quantity">1</span> <span>&times;</span>
-            <ProductPrice>$30</ProductPrice>
-          </CartItemDetails>
-        </CartItem>
+        {cartItems.map((cartItem) => {
+          return (
+            <CartItem>
+              <CartProductImg src={cartItem.imageUrl} />
+              <CartItemDetails>
+                <div className="product-name">{cartItem.name}</div>
+                <span className="quantity">{cartItem.quantity}</span>{" "}
+                <span>&times;</span>
+                <ProductPrice>${cartItem.price}</ProductPrice>
+              </CartItemDetails>
+            </CartItem>
+          );
+        })}
       </CartItemsWrapper>
       <CheckoutButton onClick={navigateToCheckout}>
         GO TO CHECKOUT

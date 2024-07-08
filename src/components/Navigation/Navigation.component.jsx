@@ -15,14 +15,26 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser } from "../../store/user/user.selector";
 import { actionSigningOut } from "../../store/user/user.action";
+import { actionToggleCartDropdown } from "../../store/cart/cart.action";
+import {
+  selectCartDropdown,
+  selectTotalCartQuantity,
+} from "../../store/cart/cart.selector";
+
 const Navigation = () => {
   const user = useSelector(selectUser);
+  const isCartOpen = useSelector(selectCartDropdown);
+  const totalQuantity = useSelector(selectTotalCartQuantity);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleAuthClick = () => {
     if (!user) navigate("/auth");
     else dispatch(actionSigningOut());
+  };
+
+  const toggleCartDropdown = () => {
+    dispatch(actionToggleCartDropdown(!isCartOpen));
   };
 
   return (
@@ -38,10 +50,10 @@ const Navigation = () => {
           <LinkList onClick={handleAuthClick}>
             <Link>{user ? `SIGN OUT` : `SIGN IN`}</Link>
           </LinkList>
-          <CartIconContainer>
+          <CartIconContainer onClick={toggleCartDropdown}>
             <CartIcon />
-            <CartItemCount>4</CartItemCount>
-            <CartDropdown />
+            <CartItemCount>{totalQuantity}</CartItemCount>
+            {isCartOpen && <CartDropdown />}
           </CartIconContainer>
         </LinksWrapper>
       </NavigationContainer>
